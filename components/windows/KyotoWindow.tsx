@@ -66,6 +66,11 @@ export default function KyotoWindow() {
         </table>
       </div>
       
+      <div className="mt-4 p-3 rounded text-xs text-gray-600">
+        <p className="text-sm">
+          This is the high score board for our the ongoing treasure hunt "Reality Restoration Project: Kyoto" we designed, based in Kyoto, Japan, where we hand out physical USBs to players and they have to travel across Kyoto and solve puzzles to complete the game, total run time is about 3-4 hours. If you are in Kyoto and want to play dm us on instagram.
+        </p>
+      </div>
     </div>
   );
 }

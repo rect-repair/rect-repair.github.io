@@ -10,6 +10,7 @@ import GamesWindow from '@/components/windows/GamesWindow';
 import ShopWindow from '@/components/windows/ShopWindow';
 import ContactWindow from '@/components/windows/ContactWindow';
 import KyotoWindow from '@/components/windows/KyotoWindow';
+import AboutWindow from '@/components/windows/AboutWindow';
 
 interface DesktopIcon {
   id: string;
@@ -87,9 +88,15 @@ const desktopIcons: DesktopIcon[] = [
     x: ICON_SPACING * 6,
     y: 0,
   },
-
-  
-  
+  {
+    id: 'about',
+    label: 'About',
+    iconSrc: '/images/icons/logo4.png',
+    iconAlt: 'About',
+    openPath: 'about',
+    x: ICON_SPACING * 7,
+    y: 0,
+  },
 ];
 
 function DesktopContent() {
@@ -156,6 +163,15 @@ function DesktopContent() {
         height: 600,
         isVisible: true,
       },
+      about: {
+        id: 'about',
+        title: 'About',
+        x: 250,
+        y: 150,
+        width: 600,
+        height: 500,
+        isVisible: true,
+      },
     };
 
     openWindow(windowConfigs[windowType as keyof typeof windowConfigs]);
@@ -212,6 +228,7 @@ function DesktopContent() {
           {window.id === 'shop' && <ShopWindow />}
           {window.id === 'contact' && <ContactWindow />}
           {window.id === 'kyoto' && <KyotoWindow />}
+          {window.id === 'about' && <AboutWindow />}
         </Window>
       ))}
 

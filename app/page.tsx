@@ -36,7 +36,7 @@ const desktopIcons: DesktopIcon[] = [
   },
   {
     id: 'archive',
-    label: 'Meetup Archive',
+    label: 'tearoom meetup archive',
     iconSrc: '/images/icons/archive.png',
     iconAlt: 'Archive',
     openPath: 'archive',

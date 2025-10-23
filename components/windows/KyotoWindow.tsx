@@ -26,7 +26,7 @@ export default function KyotoWindow() {
       <div className="mb-6">
         <div className="border border-black flex">
           <div className="flex-1 px-2 py-1 border-r border-black">
-            <h2 className="text-xl font-bold text-custom-red">入职任务绩效排行榜</h2>
+            <h2 className="text-xl font-bold text-custom-red">Project Completion Leaderboard</h2>
           </div>
           <div className="px-2 py-1">
             <div className="text-x text-custom-red">Last updated: 2024-10-08</div>
@@ -68,7 +68,7 @@ export default function KyotoWindow() {
       
       <div className="mt-4 p-3 rounded text-xs text-gray-600">
         <p className="text-sm">
-          This is the high score board for our the ongoing treasure hunt "Reality Restoration Project: Kyoto" we designed, based in Kyoto, Japan, where we hand out physical USBs to players and they have to travel across Kyoto and solve puzzles to complete the game, total run time is about 3-4 hours. If you are in Kyoto and want to play dm us on instagram.
+          This is the high score board for our the ongoing treasure hunt "Reality Restoration Project: Kyoto" designed to be played in Kyoto, Japan, where we hand out physical USBs to players and they have to travel across Kyoto and solve puzzles to complete the game, total run time is about 3-4 hours. If you are in Kyoto and want to play dm us on instagram :)
         </p>
       </div>
     </div>

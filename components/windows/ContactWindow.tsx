@@ -70,7 +70,7 @@ export default function ContactWindow() {
             >
               <div className="text-center">
                 <div className="mb-2 flex justify-center">
-                  <img src={method.icon} alt={method.name} className="w-8 h-8" />
+                  <img src={method.icon} alt={method.name} className="w-12 h-12" />
                 </div>
                 <h3 className={`font-bold text-sm ${method.color} mb-1`}>
                   {method.name}

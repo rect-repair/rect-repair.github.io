@@ -25,15 +25,16 @@ interface DesktopIcon {
 const ICON_SPACING = 120;
 
 const desktopIcons: DesktopIcon[] = [
-  {
-    id: 'events',
-    label: 'Events',
-    iconSrc: '/images/icons/events.png',
-    iconAlt: 'Events',
-    openPath: 'events',
-    x: 0,
-    y: 0,
-  },
+  // Temporarily hidden - needs renovation
+  // {
+  //   id: 'events',
+  //   label: 'Events',
+  //   iconSrc: '/images/icons/events.png',
+  //   iconAlt: 'Events',
+  //   openPath: 'events',
+  //   x: 0,
+  //   y: 0,
+  // },
   {
     id: 'archive',
     label: 'tearoom meetup archive',
@@ -95,6 +96,15 @@ const desktopIcons: DesktopIcon[] = [
     iconAlt: 'About',
     openPath: 'about',
     x: ICON_SPACING * 7,
+    y: 0,
+  },
+  {
+    id: 'cedar-os',
+    label: 'cedar-os',
+    iconSrc: '/images/icons/cedar.png',
+    iconAlt: 'CEDAR-OS',
+    openPath: 'https://rect-repair.github.io/cedar-os/',
+    x: ICON_SPACING * 8,
     y: 0,
   },
 ];

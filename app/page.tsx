@@ -11,6 +11,7 @@ import ShopWindow from '@/components/windows/ShopWindow';
 import ContactWindow from '@/components/windows/ContactWindow';
 import KyotoWindow from '@/components/windows/KyotoWindow';
 import AboutWindow from '@/components/windows/AboutWindow';
+import AlternativeRealityWindow from '@/components/windows/AlternativeRealityWindow';
 
 interface DesktopIcon {
   id: string;
@@ -107,6 +108,15 @@ const desktopIcons: DesktopIcon[] = [
     x: ICON_SPACING * 8,
     y: 0,
   },
+  {
+    id: 'alternative-reality',
+    label: '[[alternate reality]]: WEEK!',
+    iconSrc: '/images/icons/arg.png',
+    iconAlt: '[[alternate reality]]: WEEK!',
+    openPath: 'alternative-reality',
+    x: ICON_SPACING * 9,
+    y: 0,
+  },
 ];
 
 function DesktopContent() {
@@ -182,6 +192,15 @@ function DesktopContent() {
         height: 500,
         isVisible: true,
       },
+      'alternative-reality': {
+        id: 'alternative-reality',
+        title: '[[alternate reality]]: WEEK!',
+        x: 200,
+        y: 150,
+        width: 900,
+        height: 700,
+        isVisible: true,
+      },
     };
 
     openWindow(windowConfigs[windowType as keyof typeof windowConfigs]);
@@ -239,6 +258,7 @@ function DesktopContent() {
           {window.id === 'contact' && <ContactWindow />}
           {window.id === 'kyoto' && <KyotoWindow />}
           {window.id === 'about' && <AboutWindow />}
+          {window.id === 'alternative-reality' && <AlternativeRealityWindow />}
         </Window>
       ))}
 

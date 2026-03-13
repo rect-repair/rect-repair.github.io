@@ -55,7 +55,7 @@ export default function DesktopIcon({
   };
 
   const iconComponent = (
-    <div className='desktop-icon' onClick={handleClick}>
+    <div className={`desktop-icon ${id === 'alternative-reality' ? 'desktop-icon-arg-glow' : ''}`} onClick={handleClick}>
       <div className='retro-icon w-24 h-24 flex-col'>{icon}</div>
       <div className='desktop-icon-label'>{label}</div>
     </div>

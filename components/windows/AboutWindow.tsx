@@ -4,8 +4,8 @@ import React from 'react';
 
 export default function AboutWindow() {
   return (
-    <div className='min-h-full bg-white text-black p-6'>
-      <div className='space-y-4 text-base leading-relaxed'>
+    <div className='h-full'>
+      <div className='h-full bg-white text-black overflow-auto px-6 pt-6 pb-10 space-y-4 text-base leading-relaxed'>
         <p>
           [[rect*]]repair is an art-game collective making and facilitating experimental games, community events, and public interventions. Through self-organized and collaborative projects, we're building shared infrastructure for creating, publishing, and exhibiting playful media across independent scenes.
         </p>

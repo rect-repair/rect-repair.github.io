@@ -209,12 +209,12 @@ body {
 /* ---- Menubar ---- */
 .menubar {
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   height: 28px;
   background: var(--chrome);
-  border-bottom: 1px solid var(--rule);
+  border-top: 1px solid var(--rule);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -355,7 +355,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #d1d1d1;
+  background: #f0f0f0;
   border: none;
 }
 

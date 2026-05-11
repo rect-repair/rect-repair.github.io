@@ -27,4 +27,6 @@ export interface DesktopIconProps {
   onClick: () => void;
   x?: number;
   y?: number;
+  index?: number;
+  isNew?: boolean;
 }

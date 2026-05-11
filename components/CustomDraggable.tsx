@@ -107,11 +107,7 @@ export default function CustomDraggable({
   return (
     <div
       ref={elementRef}
-      className={clsx(
-        'absolute',
-        isDragging ? 'cursor-grabbing' : 'cursor-grab',
-        className
-      )}
+      className={clsx('absolute', className)}
       style={{
         left: currentPosition.x,
         top: currentPosition.y,

@@ -11,15 +11,20 @@ export default function DesktopIcon({
   onClick,
   x = 0,
   y = 0,
+  index,
+  isNew,
 }: DesktopIconProps) {
   const [position, setPosition] = useState({ x, y });
   const [isDragging, setIsDragging] = useState(false);
   const dragStartRef = useRef({ x: 0, y: 0 });
   const hasMovedRef = useRef(false);
+  const hasDraggedEverRef = useRef(false);
 
   useEffect(() => {
-    console.log('desktop icon re-rendered');
-  }, []);
+    if (!hasDraggedEverRef.current) {
+      setPosition({ x, y });
+    }
+  }, [x, y]);
 
   const handleDrag = (e: MouseEvent, data: { x: number; y: number }) => {
     setPosition({ x: data.x, y: data.y });
@@ -30,6 +35,7 @@ export default function DesktopIcon({
     );
     if (distance > 5) {
       hasMovedRef.current = true;
+      hasDraggedEverRef.current = true;
     }
   };
 
@@ -54,10 +60,22 @@ export default function DesktopIcon({
     }
   };
 
+  const animationDelay =
+    typeof index === 'number' ? `${Math.min(index, 12) * 55}ms` : undefined;
+
   const iconComponent = (
-    <div className={`desktop-icon ${id === 'alternative-reality' ? 'desktop-icon-arg-glow' : ''}`} onClick={handleClick}>
-      <div className='retro-icon w-24 h-24 flex-col'>{icon}</div>
-      <div className='desktop-icon-label'>{label}</div>
+    <div
+      className={`desktop-icon ${id === 'happy-trading-post' ? 'desktop-icon-happy-glow' : ''}`}
+      onClick={handleClick}
+      style={animationDelay ? { animationDelay } : undefined}
+    >
+      <div className='retro-icon w-24 h-24 flex-col'>
+        {icon}
+        {isNew && <span className='desktop-icon-new-badge'>new!</span>}
+      </div>
+      <div className='desktop-icon-label'>
+        <span className='desktop-icon-label-text'>{label}</span>
+      </div>
     </div>
   );
 

@@ -13,7 +13,6 @@ import ContactWindow from '@/components/windows/ContactWindow';
 import KyotoWindow from '@/components/windows/KyotoWindow';
 import AboutWindow from '@/components/windows/AboutWindow';
 import AlternativeRealityWindow from '@/components/windows/AlternativeRealityWindow';
-import HappyTradingPostWindow from '@/components/windows/HappyTradingPostWindow';
 
 interface DesktopIconDef {
   id: string;
@@ -30,6 +29,9 @@ const COLS = 5;
 const COL_PITCH = 156;
 const ROW_PITCH = 168;
 
+/** Temporarily hide friends (games) icon and window; set to true to restore. */
+const FRIENDS_UI_ENABLED = false;
+
 const desktopIcons: DesktopIconDef[] = [
   // Row 1 — projects
   {
@@ -41,14 +43,14 @@ const desktopIcons: DesktopIconDef[] = [
   },
   {
     id: 'kyoto',
-    label: 'Kyoto',
+    label: 'kyoto',
     iconSrc: '/images/icons/kyoto.png',
     iconAlt: 'Kyoto',
     openPath: 'kyoto',
   },
   {
     id: 'alternative-reality',
-    label: '[[alternate reality]]: WEEK!',
+    label: '[[alternate reality]]: week!',
     iconSrc: '/images/icons/arg.png',
     iconAlt: '[[alternate reality]]: WEEK!',
     openPath: 'alternative-reality',
@@ -65,7 +67,7 @@ const desktopIcons: DesktopIconDef[] = [
     label: 'happy trading post',
     iconSrc: '/images/icons/happytrading.png',
     iconAlt: 'happy trading post',
-    openPath: 'happy-trading-post',
+    openPath: 'https://rect.repair/happy-trading-post/',
     isNew: true,
   },
 
@@ -79,28 +81,21 @@ const desktopIcons: DesktopIconDef[] = [
   },
   {
     id: 'shop',
-    label: 'Shop',
+    label: 'shop',
     iconSrc: '/images/icons/shop.png',
     iconAlt: 'Shop',
     openPath: 'shop',
   },
   {
     id: 'contact',
-    label: 'Contact',
+    label: 'contact',
     iconSrc: '/images/icons/contact.png',
     iconAlt: 'Contact',
     openPath: 'contact',
   },
   {
-    id: 'instagram',
-    label: 'Instagram',
-    iconSrc: '/images/icons/instagram.png',
-    iconAlt: 'Instagram',
-    openPath: 'https://www.instagram.com/rect_repair/',
-  },
-  {
     id: 'about',
-    label: 'About',
+    label: 'about',
     iconSrc: '/images/icons/logo4.png',
     iconAlt: 'About',
     openPath: 'about',
@@ -131,6 +126,10 @@ function DesktopContent() {
   const firstRowCenterY = (vh - 28) / 2 - gridSpanH / 2 + GRID_Y_NUDGE;
 
   const handleOpenWindow = (windowType: string) => {
+    if (windowType === 'games' && !FRIENDS_UI_ENABLED) {
+      return;
+    }
+
     const existingWindow = windows.find((w) => w.id === windowType);
     if (existingWindow) {
       return; // Window already open
@@ -209,15 +208,6 @@ function DesktopContent() {
         height: 700,
         isVisible: true,
       },
-      'happy-trading-post': {
-        id: 'happy-trading-post',
-        title: 'happy trading post',
-        x: 250,
-        y: 180,
-        width: 700,
-        height: 550,
-        isVisible: true,
-      },
     };
 
     openWindow(windowConfigs[windowType as keyof typeof windowConfigs]);
@@ -230,7 +220,10 @@ function DesktopContent() {
       {/* Desktop Icons */}
       <div className='absolute left-0 right-0 bottom-0 top-[28px] p-4'>
         <div className='flex flex-wrap gap-2 justify-start items-start content-start h-full overflow-auto p-2 md:block'>
-          {ready && desktopIcons.map((icon, i) => {
+          {ready &&
+            desktopIcons
+              .filter((icon) => FRIENDS_UI_ENABLED || icon.id !== 'games')
+              .map((icon, i) => {
             const col = i % COLS;
             const row = Math.floor(i / COLS);
             const x = Math.round(
@@ -281,13 +274,12 @@ function DesktopContent() {
         >
           {window.id === 'events' && <EventsWindow />}
           {window.id === 'archive' && <ArchiveWindow />}
-          {window.id === 'games' && <GamesWindow />}
+          {FRIENDS_UI_ENABLED && window.id === 'games' && <GamesWindow />}
           {window.id === 'shop' && <ShopWindow />}
           {window.id === 'contact' && <ContactWindow />}
           {window.id === 'kyoto' && <KyotoWindow />}
           {window.id === 'about' && <AboutWindow />}
           {window.id === 'alternative-reality' && <AlternativeRealityWindow />}
-          {window.id === 'happy-trading-post' && <HappyTradingPostWindow />}
         </Window>
       ))}
 

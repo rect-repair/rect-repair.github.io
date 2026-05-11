@@ -20,17 +20,8 @@ const contactMethods = [
     color: 'text-arngren-blue'
 
   },
-  
   {
     id: 3,
-    name: 'GitHub',
-    description: '',
-    icon: '/images/icons/github.png',
-    action: 'https://github.com/rect-repair',
-    color: 'text-arngren-blue'
-  },
-  {
-    id: 4,
     name: 'Wechat',
     description: '',
     icon: '/images/icons/wechat.png',
@@ -38,7 +29,7 @@ const contactMethods = [
     color: 'text-arngren-blue'
   },
   {
-    id: 5,
+    id: 4,
     name: 'Red Note',
     description: '',
     icon: '/images/icons/rednote.png',

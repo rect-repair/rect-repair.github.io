@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 
-export default function AlternativeRealityWindow() {
-  const [currentUrl] = useState('http://rect.repair/alternative-reality/about.html');
+export default function CedarOSWindow() {
+  const [currentUrl] = useState('http://rect.repair/cedar-os/');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRefresh = () => {
@@ -49,7 +49,7 @@ export default function AlternativeRealityWindow() {
         <iframe
           src={currentUrl}
           className="w-full h-full border-0"
-          title="[[alternative reality]]: WEEK!"
+          title="Events Website"
           onLoad={() => setIsLoading(false)}
         />
       </div>

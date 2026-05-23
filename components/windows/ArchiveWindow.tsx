@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 export default function ArchiveWindow() {
-  const [currentUrl] = useState('https://rect-repair.github.io/tea-room/tea-room-archive.html');
+  const [currentUrl] = useState('https://rect.repair/tea-room/tea-room-archive.html');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleRefresh = () => {
@@ -29,11 +29,11 @@ export default function ArchiveWindow() {
         >
           <img src="/images/icons/refresh.png" alt="Refresh" className={`w-3 h-3 ${isLoading ? 'animate-spin' : ''}`} />
         </button>
-        
+
         <div className="flex-1 bg-white px-2 py-1 text-xs">
           <span className="text-black">{currentUrl}</span>
         </div>
-        
+
         <button
           type="button"
           onClick={handleExternal}

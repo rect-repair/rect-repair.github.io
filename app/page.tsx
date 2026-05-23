@@ -13,6 +13,8 @@ import ContactWindow from '@/components/windows/ContactWindow';
 import KyotoWindow from '@/components/windows/KyotoWindow';
 import AboutWindow from '@/components/windows/AboutWindow';
 import AlternativeRealityWindow from '@/components/windows/AlternativeRealityWindow';
+import CedarOSWindow from '@/components/windows/CedarOSWindow';
+import TradingWindow from '@/components/windows/TradingWindow';
 
 interface DesktopIconDef {
   id: string;
@@ -60,14 +62,14 @@ const desktopIcons: DesktopIconDef[] = [
     label: 'cedar-os',
     iconSrc: '/images/icons/cedar.png',
     iconAlt: 'CEDAR-OS',
-    openPath: 'https://rect-repair.github.io/cedar-os/',
+    openPath: 'cedar-os',
   },
   {
     id: 'happy-trading-post',
     label: 'happy trading post',
     iconSrc: '/images/icons/happytrading.png',
     iconAlt: 'happy trading post',
-    openPath: 'https://rect.repair/happy-trading-post/',
+    openPath: 'happy-trading-post',
     isNew: true,
   },
 
@@ -208,6 +210,24 @@ function DesktopContent() {
         height: 700,
         isVisible: true,
       },
+      'cedar-os': {
+        id: 'cedar-os',
+        title: 'CEDAR-OS',
+        x: 600,
+        y: 120,
+        width: 900,
+        height: 700,
+        isVisible: true,
+      },
+      'happy-trading-post': {
+        id: 'happy-trading-post',
+        title: 'happy trading post!',
+        x: 1050,
+        y: 180,
+        width: 500,
+        height: 800,
+        isVisible: true,
+      },
     };
 
     openWindow(windowConfigs[windowType as keyof typeof windowConfigs]);
@@ -224,40 +244,40 @@ function DesktopContent() {
             desktopIcons
               .filter((icon) => FRIENDS_UI_ENABLED || icon.id !== 'games')
               .map((icon, i) => {
-            const col = i % COLS;
-            const row = Math.floor(i / COLS);
-            const x = Math.round(
-              firstColCenterX + col * COL_PITCH - ICON_BOX_W / 2
-            );
-            const y = Math.round(
-              firstRowCenterY + row * ROW_PITCH - ICON_BOX_H / 2
-            );
-            return (
-              <DesktopIcon
-                key={icon.id}
-                id={icon.id}
-                label={icon.label}
-                index={i + 1}
-                isNew={icon.isNew}
-                icon={
-                  <img
-                    src={icon.iconSrc}
-                    alt={icon.iconAlt}
-                    className='w-24 h-24'
+                const col = i % COLS;
+                const row = Math.floor(i / COLS);
+                const x = Math.round(
+                  firstColCenterX + col * COL_PITCH - ICON_BOX_W / 2
+                );
+                const y = Math.round(
+                  firstRowCenterY + row * ROW_PITCH - ICON_BOX_H / 2
+                );
+                return (
+                  <DesktopIcon
+                    key={icon.id}
+                    id={icon.id}
+                    label={icon.label}
+                    index={i + 1}
+                    isNew={icon.isNew}
+                    icon={
+                      <img
+                        src={icon.iconSrc}
+                        alt={icon.iconAlt}
+                        className='w-24 h-24'
+                      />
+                    }
+                    onClick={() => {
+                      if (icon.openPath.startsWith('http')) {
+                        window.open(icon.openPath, '_blank');
+                      } else {
+                        handleOpenWindow(icon.openPath);
+                      }
+                    }}
+                    x={x}
+                    y={y}
                   />
-                }
-                onClick={() => {
-                  if (icon.openPath.startsWith('http')) {
-                    window.open(icon.openPath, '_blank');
-                  } else {
-                    handleOpenWindow(icon.openPath);
-                  }
-                }}
-                x={x}
-                y={y}
-              />
-            );
-          })}
+                );
+              })}
         </div>
       </div>
 
@@ -280,6 +300,8 @@ function DesktopContent() {
           {window.id === 'kyoto' && <KyotoWindow />}
           {window.id === 'about' && <AboutWindow />}
           {window.id === 'alternative-reality' && <AlternativeRealityWindow />}
+          {window.id === 'cedar-os' && <CedarOSWindow />}
+          {window.id === 'happy-trading-post' && <TradingWindow />}
         </Window>
       ))}
 

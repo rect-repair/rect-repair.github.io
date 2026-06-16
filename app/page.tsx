@@ -15,6 +15,7 @@ import AboutWindow from '@/components/windows/AboutWindow';
 import AlternativeRealityWindow from '@/components/windows/AlternativeRealityWindow';
 import CedarOSWindow from '@/components/windows/CedarOSWindow';
 import TradingWindow from '@/components/windows/TradingWindow';
+import HtmlDayWindow from '@/components/windows/HtmlDayWindow';
 
 interface DesktopIconDef {
   id: string;
@@ -70,6 +71,13 @@ const desktopIcons: DesktopIconDef[] = [
     iconSrc: '/images/icons/happytrading.png',
     iconAlt: 'happy trading post',
     openPath: 'happy-trading-post',
+  },
+  {
+    id: 'html-2026',
+    label: 'html day 2026',
+    iconSrc: '/images/icons/html.png',
+    iconAlt: 'HTML DAY 2026 shanghai',
+    openPath: 'html-2026',
     isNew: true,
   },
 
@@ -228,6 +236,15 @@ function DesktopContent() {
         height: 800,
         isVisible: true,
       },
+      'html-2026': {
+        id: 'html-2026',
+        title: 'HTML DAY 2026 shanghai',
+        x: 350,
+        y: 160,
+        width: 900,
+        height: 700,
+        isVisible: true,
+      },
     };
 
     openWindow(windowConfigs[windowType as keyof typeof windowConfigs]);
@@ -302,6 +319,7 @@ function DesktopContent() {
           {window.id === 'alternative-reality' && <AlternativeRealityWindow />}
           {window.id === 'cedar-os' && <CedarOSWindow />}
           {window.id === 'happy-trading-post' && <TradingWindow />}
+          {window.id === 'html-2026' && <HtmlDayWindow />}
         </Window>
       ))}
 

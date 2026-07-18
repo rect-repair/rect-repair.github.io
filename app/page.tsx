@@ -16,6 +16,7 @@ import AlternativeRealityWindow from '@/components/windows/AlternativeRealityWin
 import CedarOSWindow from '@/components/windows/CedarOSWindow';
 import TradingWindow from '@/components/windows/TradingWindow';
 import HtmlDayWindow from '@/components/windows/HtmlDayWindow';
+import FoundMediaWindow from '@/components/windows/FoundMediaWindow';
 
 interface DesktopIconDef {
   id: string;
@@ -78,6 +79,14 @@ const desktopIcons: DesktopIconDef[] = [
     iconSrc: '/images/icons/html.png',
     iconAlt: 'HTML DAY 2026 shanghai',
     openPath: 'html-2026',
+    isNew: true,
+  },
+  {
+    id: 'found-media',
+    label: 'found media vj battle',
+    iconSrc: '/images/icons/vj-battle.png',
+    iconAlt: 'Found Media VJ Battle Royale',
+    openPath: 'found-media',
     isNew: true,
   },
 
@@ -245,6 +254,15 @@ function DesktopContent() {
         height: 700,
         isVisible: true,
       },
+      'found-media': {
+        id: 'found-media',
+        title: 'FOUND MEDIA VJ BATTLE ROYALE',
+        x: 250,
+        y: 120,
+        width: 1280,
+        height: 860,
+        isVisible: true,
+      },
     };
 
     openWindow(windowConfigs[windowType as keyof typeof windowConfigs]);
@@ -320,6 +338,7 @@ function DesktopContent() {
           {window.id === 'cedar-os' && <CedarOSWindow />}
           {window.id === 'happy-trading-post' && <TradingWindow />}
           {window.id === 'html-2026' && <HtmlDayWindow />}
+          {window.id === 'found-media' && <FoundMediaWindow />}
         </Window>
       ))}
 
